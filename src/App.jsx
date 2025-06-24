@@ -1,25 +1,28 @@
-import { useState } from 'react'
-import './App.css'
-import Header from './Components/Header'
-import TodoProvider from './Context/TodoContext'
-import TodoInput from './Components/TodoInput'
-import TodoList from './Components/TodoList'
-import Tabs from './Components/Tabs'
+import { useState } from "react";
+import "./App.css";
+import Header from "./Components/Header";
+import TodoProvider from "./Context/TodoContext";
+import TodoInput from "./Components/TodoInput";
+import TodoList from "./Components/TodoList";
+import Tabs from "./Components/Tabs";
+import Background from "./Components/Background";
 
 function App() {
- 
   return (
-    <div className='px-6 py-10'>
-      <TodoProvider>
-        
-        <Header/>
-        <TodoInput/>
-        <TodoList/>
-        <Tabs/>
-      </TodoProvider>
-      
+    <div className="relative min-h-screen bg-gray-200">
+      <Background className="absolute z-0" />
+      <div className="relative px-6 py-10 flex flex-col gap-10 z-10">
+        <TodoProvider>
+          <Header />
+          <div className="flex flex-col gap-4 text-gray-400">
+            <TodoInput />
+            <TodoList />
+            <Tabs />
+          </div>
+        </TodoProvider>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
