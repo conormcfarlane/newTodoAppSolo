@@ -6,7 +6,7 @@ export default function Tabs() {
 
   const tabs = ["All", "Active", "Completed"];
   return (
-    <div className="flex justify-center gap-5 bg-white rounded-lg px-5 py-2">
+    <div className="flex justify-center gap-5 bg-white rounded-lg px-5 py-2 dark:bg-gray-800 ">
       {tabs.map((tab) => (
         <div key={tab}>
           <p

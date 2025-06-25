@@ -44,6 +44,15 @@ export default function TodoProvider({ children }) {
     setIsDarkMode((prevMode) => !prevMode);
     console.log(isDarkMode);
   };
+
+  const handleEnterDown = (e) => {
+    if(e.key === "Enter"){
+      handleAddTodo(inputValue)
+    }
+  }
+  const handleClearCompleted = () => {
+    setTodos(todos.filter(todo => !todo.complete))
+    }
   return (
     <TodoContext.Provider
       value={{
@@ -57,7 +66,9 @@ export default function TodoProvider({ children }) {
         handleDeleteTodo,
         selectedTab,
         setSelectedTab,
-        handleCompleteTodo
+        handleCompleteTodo,
+        handleEnterDown,
+        handleClearCompleted
       }}
     >
       {children}
