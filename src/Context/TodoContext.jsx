@@ -19,6 +19,11 @@ export default function TodoProvider({ children }) {
       input: "clean the kitchen lad",
       complete: false,
     },
+    {
+      id: crypto.randomUUID(),
+      input: "clean the house",
+      complete: true,
+    },
   ]);
 
   const handleAddTodo = (newTodo) => {
@@ -35,9 +40,11 @@ export default function TodoProvider({ children }) {
     console.log(todos);
   };
   const handleCompleteTodo = (id) => {
-     setTodos(todos.map(todo => 
-      todo.id === id ? {...todo, complete: !todo.complete} : todo
-    ))
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, complete: !todo.complete } : todo
+      )
+    );
   };
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
@@ -46,13 +53,13 @@ export default function TodoProvider({ children }) {
   };
 
   const handleEnterDown = (e) => {
-    if(e.key === "Enter"){
-      handleAddTodo(inputValue)
+    if (e.key === "Enter") {
+      handleAddTodo(inputValue);
     }
-  }
+  };
   const handleClearCompleted = () => {
-    setTodos(todos.filter(todo => !todo.complete))
-    }
+    setTodos(todos.filter((todo) => !todo.complete));
+  };
   return (
     <TodoContext.Provider
       value={{
@@ -68,7 +75,7 @@ export default function TodoProvider({ children }) {
         setSelectedTab,
         handleCompleteTodo,
         handleEnterDown,
-        handleClearCompleted
+        handleClearCompleted,
       }}
     >
       {children}

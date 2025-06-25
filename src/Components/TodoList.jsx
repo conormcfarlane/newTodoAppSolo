@@ -20,7 +20,8 @@ export default function TodoList() {
           </div>
         ))}
       </div>
-      <div className="flex justify-between bg-white dark:bg-gray-800 px-5 py-4 text-sm rounded-lg">
+      {todos.length > 0 ? (
+         <div className="flex justify-between bg-white dark:bg-gray-800 px-5 py-4 text-sm rounded-b-lg">
         {selectedTab === "All" &&
         todos.filter((val) => !val.complete).length > 0 ? (
           <p>{todos.filter((val) => !val.complete).length} items left</p>
@@ -29,6 +30,8 @@ export default function TodoList() {
         )}
         <button onClick={handleClearCompleted}>Clear Completed</button>
       </div>
+      ) : null}
+     
     </section>
   );
 }
